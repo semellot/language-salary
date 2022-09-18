@@ -99,7 +99,7 @@ def predict_rub_salary_sj(vacancy):
     return predict_salary(salary_from, salary_to)
 
 def print_vacancies_statistic(title, popular_langs):
-    table_data = [
+    table_statistic = [
         (
             'Язык программирования',
             'Вакансий найдено',
@@ -108,14 +108,14 @@ def print_vacancies_statistic(title, popular_langs):
         )
     ]
     for lang,count in popular_langs.items():
-        table_data.append((
+        table_statistic.append((
             lang,
             popular_langs[lang]['vacancies_found'],
             popular_langs[lang]['vacancies_processed'],
             popular_langs[lang]['average_salary']
         ))
-    table_data = tuple(table_data)
-    table_instance = AsciiTable(table_data, title)
+    table_statistic = tuple(table_statistic)
+    table_instance = AsciiTable(table_statistic, title)
     print(table_instance.table)
 
 
