@@ -141,8 +141,9 @@ if __name__ == "__main__":
         vacancies = get_vacancies_hh(lang)
         vacancy_salaries = []
         for vacancy in vacancies:
-            if predict_rub_salary_hh(vacancy):
-                vacancy_salaries.append(predict_rub_salary_hh(vacancy))
+            hh_vacancy = predict_rub_salary_hh(vacancy)
+            if hh_vacancy:
+                vacancy_salaries.append(hh_vacancy)
 
         if vacancy_salaries:
             average_salary = sum(vacancy_salaries) / len(vacancy_salaries)
@@ -160,8 +161,9 @@ if __name__ == "__main__":
         vacancies = get_vacancies_sj(lang, SJ_KEY)
         vacancy_salaries = []
         for vacancy in vacancies:
-            if predict_rub_salary_sj(vacancy):
-                vacancy_salaries.append(predict_rub_salary_sj(vacancy))
+            sj_vacancy = predict_rub_salary_sj(vacancy)
+            if sj_vacancy:
+                vacancy_salaries.append(sj_vacancy)
 
         if vacancy_salaries:
             average_salary = sum(vacancy_salaries) / len(vacancy_salaries)
