@@ -6,10 +6,12 @@ from terminaltables import AsciiTable
 
 def get_count_vacancies_hh(search_text):
     url = 'https://api.hh.ru/vacancies'
+    period_days = 30
+    town_id = 1
     payload = {
         'text': f'программист {search_text}',
-        'area': 1,
-        'period': 30
+        'area': town_id,
+        'period': period_days
     }
     response = requests.get(url, params=payload)
     response.raise_for_status()
@@ -20,12 +22,14 @@ def get_vacancies_hh(search_text):
     url = 'https://api.hh.ru/vacancies'
     page = 0
     pages_number = 10
+    period_days = 30
+    town_id = 1
     vacancies = []
     while page < pages_number:
         payload = {
             'text': f'программист {search_text}',
-            'area': 1,
-            'period': 30,
+            'area': town_id,
+            'period': period_days,
             'only_with_salary': 'true',
             'page': page,
             'per_page': 100
@@ -41,10 +45,12 @@ def get_count_vacancies_sj(search_text, SJ_KEY):
     headers = {
         'X-Api-App-Id': SJ_KEY
     }
+    category_id = 48
+    town_id = 4
     payload = {
-        'catalogues': 48,
+        'catalogues': category_id,
         'keyword': search_text,
-        'town': 4,
+        'town': town_id,
         'page': 5,
         'count': 100
     }
@@ -58,10 +64,12 @@ def get_vacancies_sj(search_text, SJ_KEY):
     headers = {
         'X-Api-App-Id': SJ_KEY
     }
+    category_id = 48
+    town_id = 4
     payload = {
-        'catalogues': 48,
+        'catalogues': category_id,
         'keyword': search_text,
-        'town': 4
+        'town': town_id
     }
     response = requests.get(url, headers=headers, params=payload)
     response.raise_for_status()
