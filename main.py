@@ -123,21 +123,22 @@ if __name__ == "__main__":
     load_dotenv()
     SJ_KEY = os.environ['SJ_KEY']
 
-    popular_langs = {
-        'JavaScript': 0,
-        'Java': 0,
-        'Python': 0,
-        'Ruby': 0,
-        'PHP': 0,
-        'C++': 0,
-        'C#': 0,
-        'Scala': 0,
-        'Go': 0,
-        'Swift': 0
-    }
+    popular_langs = [
+        'JavaScript',
+        'Java',
+        'Python',
+        'Ruby',
+        'PHP',
+        'C++',
+        'C#',
+        'Scala',
+        'Go',
+        'Swift'
+    ]
+    popular_langs_info = {}
 
     # HeadHunter:
-    for lang,count in popular_langs.items():
+    for lang in popular_langs:
         vacancies = get_vacancies_hh(lang)
         vacancy_salaries = []
         for vacancy in vacancies:
@@ -148,16 +149,16 @@ if __name__ == "__main__":
         if vacancy_salaries:
             average_salary = sum(vacancy_salaries) / len(vacancy_salaries)
 
-        popular_langs[lang] = {
+        popular_langs_info[lang] = {
             'vacancies_found': get_count_vacancies_hh(lang),
             'vacancies_processed': len(vacancy_salaries),
             'average_salary': int(average_salary)
         }
-    print_vacancies_statistic('HeadHunter Moscow', popular_langs)
+    print_vacancies_statistic('HeadHunter Moscow', popular_langs_info)
 
 
     # SuperJob:
-    for lang,count in popular_langs.items():
+    for lang in popular_langs:
         vacancies = get_vacancies_sj(lang, SJ_KEY)
         vacancy_salaries = []
         for vacancy in vacancies:
@@ -168,9 +169,9 @@ if __name__ == "__main__":
         if vacancy_salaries:
             average_salary = sum(vacancy_salaries) / len(vacancy_salaries)
 
-        popular_langs[lang] = {
+        popular_langs_info[lang] = {
             'vacancies_found': get_count_vacancies_sj(lang, SJ_KEY),
             'vacancies_processed': len(vacancy_salaries),
             'average_salary': int(average_salary)
         }
-    print_vacancies_statistic('SuperJob Moscow', popular_langs)
+    print_vacancies_statistic('SuperJob Moscow', popular_langs_info)
