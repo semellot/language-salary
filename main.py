@@ -135,43 +135,43 @@ if __name__ == "__main__":
         'Go',
         'Swift'
     ]
-    popular_langs_info = {}
+    popular_langs_salaries = {}
 
     # HeadHunter:
     for lang in popular_langs:
         vacancies = get_vacancies_hh(lang)
-        vacancy_salaries = []
+        lang_salaries = []
         for vacancy in vacancies:
-            hh_vacancy = predict_rub_salary_hh(vacancy)
-            if hh_vacancy:
-                vacancy_salaries.append(hh_vacancy)
+            predict_rub_salary = predict_rub_salary_hh(vacancy)
+            if predict_rub_salary:
+                lang_salaries.append(predict_rub_salary)
 
-        if vacancy_salaries:
-            average_salary = sum(vacancy_salaries) / len(vacancy_salaries)
+        if lang_salaries:
+            average_salary = sum(lang_salaries) / len(lang_salaries)
 
-        popular_langs_info[lang] = {
+        popular_langs_salaries[lang] = {
             'vacancies_found': get_count_vacancies_hh(lang),
-            'vacancies_processed': len(vacancy_salaries),
+            'vacancies_processed': len(lang_salaries),
             'average_salary': int(average_salary)
         }
-    print_vacancies_statistic('HeadHunter Moscow', popular_langs_info)
+    print_vacancies_statistic('HeadHunter Moscow', popular_langs_salaries)
 
 
     # SuperJob:
     for lang in popular_langs:
         vacancies = get_vacancies_sj(lang, SJ_KEY)
-        vacancy_salaries = []
+        lang_salaries = []
         for vacancy in vacancies:
-            sj_vacancy = predict_rub_salary_sj(vacancy)
-            if sj_vacancy:
-                vacancy_salaries.append(sj_vacancy)
+            predict_rub_salary = predict_rub_salary_sj(vacancy)
+            if predict_rub_salary:
+                lang_salaries.append(predict_rub_salary)
 
-        if vacancy_salaries:
-            average_salary = sum(vacancy_salaries) / len(vacancy_salaries)
+        if lang_salaries:
+            average_salary = sum(lang_salaries) / len(lang_salaries)
 
-        popular_langs_info[lang] = {
+        popular_langs_salaries[lang] = {
             'vacancies_found': get_count_vacancies_sj(lang, SJ_KEY),
-            'vacancies_processed': len(vacancy_salaries),
+            'vacancies_processed': len(lang_salaries),
             'average_salary': int(average_salary)
         }
-    print_vacancies_statistic('SuperJob Moscow', popular_langs_info)
+    print_vacancies_statistic('SuperJob Moscow', popular_langs_salaries)
