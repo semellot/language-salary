@@ -149,11 +149,17 @@ if __name__ == "__main__":
         if lang_salaries:
             average_salary = sum(lang_salaries) / len(lang_salaries)
 
-        popular_langs_salaries[lang] = {
-            'vacancies_found': len(vacancies),
-            'vacancies_processed': len(lang_salaries),
-            'average_salary': int(average_salary)
-        }
+            popular_langs_salaries[lang] = {
+                'vacancies_found': len(vacancies),
+                'vacancies_processed': len(lang_salaries),
+                'average_salary': int(average_salary)
+            }
+        else:
+            popular_langs_salaries[lang] = {
+                'vacancies_found': 0,
+                'vacancies_processed': 0,
+                'average_salary': 0
+            }
     print_vacancies_statistic('HeadHunter Moscow', popular_langs_salaries)
 
 
@@ -169,9 +175,15 @@ if __name__ == "__main__":
         if lang_salaries:
             average_salary = sum(lang_salaries) / len(lang_salaries)
 
-        popular_langs_salaries[lang] = {
-            'vacancies_found': len(vacancies),
-            'vacancies_processed': len(lang_salaries),
-            'average_salary': int(average_salary)
-        }
+            popular_langs_salaries[lang] = {
+                'vacancies_found': len(vacancies),
+                'vacancies_processed': len(lang_salaries),
+                'average_salary': int(average_salary)
+            }
+        else:
+            popular_langs_salaries[lang] = {
+                'vacancies_found': 0,
+                'vacancies_processed': 0,
+                'average_salary': 0
+            }
     print_vacancies_statistic('SuperJob Moscow', popular_langs_salaries)
