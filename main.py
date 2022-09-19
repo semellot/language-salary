@@ -150,7 +150,7 @@ if __name__ == "__main__":
             average_salary = sum(lang_salaries) / len(lang_salaries)
 
         popular_langs_salaries[lang] = {
-            'vacancies_found': get_count_vacancies_hh(lang),
+            'vacancies_found': len(vacancies),
             'vacancies_processed': len(lang_salaries),
             'average_salary': int(average_salary)
         }
@@ -170,7 +170,7 @@ if __name__ == "__main__":
             average_salary = sum(lang_salaries) / len(lang_salaries)
 
         popular_langs_salaries[lang] = {
-            'vacancies_found': get_count_vacancies_sj(lang, SJ_KEY),
+            'vacancies_found': len(vacancies),
             'vacancies_processed': len(lang_salaries),
             'average_salary': int(average_salary)
         }
